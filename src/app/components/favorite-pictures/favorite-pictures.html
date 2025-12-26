@@ -4,7 +4,6 @@
 } @else {
     <a routerLink="">Home</a>
     <div class="results">
-        
         @for (picture of pictures; track picture.date) {
             <app-picture-card [picture]="picture"></app-picture-card>
         }

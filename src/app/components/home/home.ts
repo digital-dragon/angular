@@ -10,6 +10,8 @@ import { Picture } from '../../types/picture';
 import { PictureCard } from '../picture-card/picture-card';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { NasaPicturesActions } from '../../actions/nasa-pictures.actions';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +21,8 @@ import { RouterModule } from '@angular/router';
 })
 export class Home implements OnInit {
   api = inject(Api);
+  store = inject(Store);
+
   cdf = inject(ChangeDetectorRef);
   pictures: Picture[] = [];
   filteredPictures: Picture[] = [];
@@ -26,11 +30,13 @@ export class Home implements OnInit {
   data = this.api.getPictures();
 
   ngOnInit(): void {
-    this.api.getPictures().subscribe((pictures) => {
-      this.pictures = pictures;
-      this.filteredPictures = pictures;
-      this.cdf.detectChanges();
-    });
+    this.store
+      .select((state) => state.nasaPictures)
+      .subscribe((pictures) => {
+        this.pictures = pictures;
+        this.filteredPictures = pictures;
+        this.cdf.detectChanges();
+      });
   }
 
   filterResults(filterValue: string) {
