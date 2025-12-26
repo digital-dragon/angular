@@ -2,6 +2,7 @@
     <input type="text" placeholder="Filter by description" #filter/>
     <button class="search-button" type="button" (click)="filterResults(filter.value)">Search</button>
 </form>
+<a routerLink="favorites" class="favorites-link">Favorites</a>
 <div class="results">
     @for (picture of filteredPictures; track  picture.date ) {
         <app-picture-card [picture]="picture"></app-picture-card>

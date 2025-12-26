@@ -1,0 +1,14 @@
+@if (pictures.length === 0) {
+    <p style="color: red; font-weight: bold;">No favorite pictures added yet.</p>
+    <a routerLink="">Home</a>
+} @else {
+    <a routerLink="">Home</a>
+    <div class="results">
+        
+        @for (picture of pictures; track picture.date) {
+            <app-picture-card [picture]="picture"></app-picture-card>
+        }
+    </div>
+}
+
+

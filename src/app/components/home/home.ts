@@ -9,10 +9,11 @@ import { Api } from '../../services/api';
 import { Picture } from '../../types/picture';
 import { PictureCard } from '../picture-card/picture-card';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [PictureCard, CommonModule],
+  imports: [PictureCard, CommonModule, RouterModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
