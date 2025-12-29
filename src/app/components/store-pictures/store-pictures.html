@@ -1,0 +1,6 @@
+<div class="results">
+    <a routerLink="">Home</a>
+    @for (picture of pictures(); track  picture.date ) {
+        <app-picture-card [picture]="picture"></app-picture-card>
+    }
+</div>
